@@ -27,6 +27,7 @@ textbutton1.BackgroundColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton1.BorderColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton1.TextColor3 = Color3.new(32/255, 32/255, 32/255)
 textbutton1.Text = "AutoFarm"
+textbutton1.Name = "AutoFarm"
 textbutton1.TextSize = 10
 
 local textbutton2 = Instance.new("TextButton")
@@ -38,7 +39,8 @@ textbutton2.TextTransparency = 1
 textbutton2.BackgroundColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton2.BorderColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton2.TextColor3 = Color3.new(32/255, 32/255, 32/255)
-textbutton2.Text = "Button"
+textbutton2.Text = "Button" -- названиме кнопки(поменять в далдьнейшем)
+textbutton2.Name = "Button" -- название файла(поменять в далдьнейшем)
 textbutton2.TextSize = 10
 
 local textbutton3 = Instance.new("TextButton")
@@ -50,7 +52,8 @@ textbutton3.TextTransparency = 1
 textbutton3.BackgroundColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton3.BorderColor3 = Color3.new(93/255, 93/255, 93/255)
 textbutton3.TextColor3 = Color3.new(32/255, 32/255, 32/255)
-textbutton3.Text = "Button"
+textbutton3.Text = "Button" -- названиме кнопки(поменять в далдьнейшем)
+textbutton3.Name = "Button" -- название файла(поменять в далдьнейшем)
 textbutton3.TextSize = 10
 
 while textbutton1.BackgroundTransparency > 0 do wait(0.01)
@@ -61,3 +64,7 @@ while textbutton1.BackgroundTransparency > 0 do wait(0.01)
     textbutton3.BackgroundTransparency -= 0.02
     textbutton3.TextTransparency -= 0.02
 end
+
+textbutton1.MouseButton1Click:Connect(function()
+    
+end)
