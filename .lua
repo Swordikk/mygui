@@ -1,6 +1,41 @@
+-- Locals --
 local players = game:GetService("Players")
 local localplayer = players.LocalPlayer
+local character = localplayer.Character
+local humanoid = character.Humanoid
+local humanoidrootpart = character.HumanoidRootPart
 local playergui = localplayer.PlayerGui
+
+-- AntiAFK --
+while not game:IsLoaded() do wait() end
+repeat wait() until game.Players.LocalPlayer.Character
+Players = game:GetService("Players")
+local GC = getconnections or get_signal_cons
+if GC then
+	for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+		if v["Disable"] then v["Disable"](v)
+		elseif v["Disconnect"] then v["Disconnect"](v)
+		end
+	end
+else
+Players.LocalPlayer.Idled:Connect(function()
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+  	end)
+end
+
+-- Tables --
+local Thieving  = { 
+    Vector3.new(194.7723846435547, 5.393672466278076, -1.0488529205322266),
+    Vector3.new(220.02371215820312, 8.296595573425293, -10.974353790283203),
+    Vector3.new(240.34519958496094, 8.2985200881958, -13.118978500366211),
+    Vector3.new(274.0917663574219, 10.293213844299316, -41.420467376708984),
+    Vector3.new(295.7476501464844, 10.351471900939941, -44.3170051574707),
+    Vector3.new(321.22930908203125, 14.39346981048584, -23.170984268188477),
+    Vector3.new(335.78338623046875, 14.409186363220215, -2.5764825344085693),
+    Vector3.new(350.5539855957031, 19.969709396362305, 37.36346435546875),
+    Vector3.new(301.1578369140625, 22.588266372680664, 64.06158447265625)
+}
 
 local screengui = Instance.new("ScreenGui")
 screengui.Parent = playergui
@@ -65,6 +100,18 @@ while textbutton1.BackgroundTransparency > 0 do wait(0.01)
     textbutton3.TextTransparency -= 0.02
 end
 
+local isAutoFarming = false
+
 textbutton1.MouseButton1Click:Connect(function()
-    
+    if not isAutoFarming then
+        isAutoFarming = true
+        while isAutoFarming do
+            for i = 1, #Thieving do
+                humanoidrootpart.CFrame = CFrame.new(Thieving[i])
+                wait(1)
+            end
+        end
+    else
+        isAutoFarming = false
+    end
 end)
